@@ -11,10 +11,14 @@ SignIn (로그인)
  성공
  {
     code : "SU",
-    message : "Success."
+    message : "Success.",
+    token : "jwt...",
+    expiredDate : 123456789
  }
 
  실패
+
+ - 필수 정보 미입력
  
  - 로그인 실패
  Http Status - 401 (unauthorized)
@@ -34,10 +38,47 @@ SignIn (로그인)
 
 signUp (회원가입)
 
+ {
+    *email : String,
+    *password : String,
+    *nickname : String,
+    *phone : String,
+    *address : String,
+    addressDetail : String
+ }
+
+ - response
+
+ 성공
+ Http Status - 200 (OK)
+ {
+    code : "SU",
+    message : "Success."
+ }
+
+ 실패
+
+ - 필수 정보 미입력 / 이메일 포멧 불일치 / 비밀번호 8자 미만 / 전화번호가 포멧 불일치
+
+ -이메일 중복
+ Http Status - 400 (Bad Request)
+ {
+    code : "EE",
+    message : "Existed Email."
+ }
+
+  - 데이터 베이스 에러
+ Http Status - 500 (Internal Server Error)
+ {
+    code : "DE",
+    message : "Database Error."
+ }
+
 =================================================
 
-
 weeklyTop3 (주간 상위 3 게시물 리스트)
+
+=================================================
 
 currentList (최신 게시물 리스트)
 
